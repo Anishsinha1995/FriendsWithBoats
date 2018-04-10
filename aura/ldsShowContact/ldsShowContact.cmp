@@ -1,0 +1,27 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome">
+
+    <aura:attribute name="contactRecord" type="Object"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    
+    <force:recordData aura:id="recordLoader"
+        recordId="{!v.recordId}"
+        fields="Name,Description,Phone,Industry"
+        targetFields="{!v.contactRecord}"
+        targetError="{!v.recordLoadError}"
+    />
+
+    <!-- Display a lightning card with details about the contact -->
+    <div class="Contact Details"> 
+        <lightning:card iconName="standard:contact" title="{!v.contactRecord.Name}" >
+            <div class="slds-p-horizontal--small">
+                <p class="slds-text-heading--small">
+                    <lightning:formattedPhone title="Phone"  value="{!v.contactRecord.Phone}" /></p>
+                <p class="slds-text-heading--small">
+                    <lightning:formattedText title="Description" value="{!v.contactRecord.Description}" /></p>
+                <p class="slds-text-heading--small">
+                     <lightning:formattedText title="Industry" value="{!v.contactRecord.Industry}" /></p>
+            </div>
+        </lightning:card>
+    </div>
+
+</aura:component>

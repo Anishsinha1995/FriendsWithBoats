@@ -1,0 +1,95 @@
+<aura:component controller="CampingListController">
+    <aura:attribute name="items" type="Camping_Item__c[]"/>
+
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <aura:attribute name="newItem" type="Camping_Item__c" default="{'Name':'',
+                                                                   'Quantity__c':0,
+                                                                   'Price__c':0,
+                                                                   'Packed__c':false,
+                                                                   'sobjectType':'Camping_Item__c'}"/>
+    
+    <!-- PAGE HEADER -->
+    <lightning:layout class="slds-page-header slds-page-header--object-home">
+        <lightning:layoutItem >
+            <lightning:icon iconName="standard:scan_card" alternativeText="My items"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="horizontal-small">
+            <div class="page-section page-header">
+                <h1 class="slds-text-heading--label">items</h1>
+                <h2 class="slds-text-heading--medium">My items</h2>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- / PAGE HEADER -->
+    
+    <!-- NEW EXPENSE FORM -->
+    <lightning:layout >
+        <lightning:layoutItem padding="around-small" size="6">
+            
+            <!-- CREATE NEW EXPENSE -->
+            <div aria-labelledby="newitemform">
+                
+                <!-- BOXED AREA -->
+                <fieldset class="slds-box slds-theme--default slds-container--small">
+                    
+                    <legend id="newitemform" class="slds-text-heading--small 
+                                                       slds-p-vertical--medium">
+                        Add Item
+                    </legend>
+                    
+                    <!-- CREATE NEW EXPENSE FORM -->
+                    <form class="slds-form--stacked">          
+                        <lightning:input aura:id="itemform" label="Item Name"
+                                         name="campingName"
+                                         value="{!v.newItem.Name}"
+                                         required="true"/> 
+                        <lightning:input type="number" aura:id="itemform" label="Quantity"
+                                         name="quantity"
+                                         min="1"
+                                         formatter="currency"
+                                         step="0.01"
+                                         value="{!v.newItem.Quantity__c}"
+                                         messageWhenRangeUnderflow="Enter an amount that's at least $1."/>
+                        <lightning:input type="number" aura:id="itemform" label="Price"
+                                         name="price"
+                                         min="1"
+                                         formatter="currency"
+                                         step="0.01"
+                                         value="{!v.newItem.Price__c}"/>                        
+                        <lightning:input type="checkbox" aura:id="itemform" label="Packed?"  
+                                         name="itemprice"
+                                         checked="{!v.newItem.Packed__c}"/>
+                        <lightning:button label="Create Item" 
+                                          class="slds-m-top--medium"
+                                          variant="brand"
+                                          onclick="{!c.clickCreateItem }"/>
+                    </form>
+                    <!-- / CREATE NEW EXPENSE FORM -->
+                    
+                </fieldset>
+                <!-- / BOXED AREA -->
+                
+            </div>
+            <!-- / CREATE NEW EXPENSE -->
+            
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- / NEW EXPENSE FORM -->
+        
+    
+    <div class="slds-card slds-p-top--medium">
+        <header class="slds-card__header">
+            <h3 class="slds-text-heading--small">Items</h3>
+        </header>
+        
+        <section class="slds-card__body">
+            <div id="list" class="row">
+                <aura:iteration items="{!v.items}" var="items">
+                    <c:campingListItem item="{!item}"/>
+                </aura:iteration>
+            </div>
+        </section>
+    </div>
+    
+</aura:component>
