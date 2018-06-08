@@ -1,5 +1,0 @@
-<aura:component implements="force:appHostable">
-
-    <p>I am proficient in JavaScript</p>
-
-</aura:component>

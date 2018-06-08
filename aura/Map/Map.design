@@ -1,0 +1,5 @@
+<design:component label="Map">
+    <!-- https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_config_for_app_builder.htm -->
+    <design:attribute name="width" label="width" description="Width of the component" />
+    <design:attribute name="height" label="height" description="Height of the component" />
+</design:component>
