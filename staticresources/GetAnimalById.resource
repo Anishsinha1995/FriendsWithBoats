@@ -1,1 +1,0 @@
-{"animal":{"id":1,"name":"leão","eats":"meat","says":"hello"}}
