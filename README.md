@@ -1,4 +1,7 @@
-# FriendsWithBoats
-Full solution for the friends with Boats app created during the "Lightning Component Framework Specialist" superbadge.
-
-https://trailhead.salesforce.com/en/superbadges/superbadge_lcf
+Apex Wrapper Salesforce Metadata API
+====================================
+ 
+<a href="https://githubsfdeploy.herokuapp.com?owner=financialforcedev&repo=apex-mdapi">
+  <img alt="Deploy to Salesforce"
+       src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png">
+</a>
